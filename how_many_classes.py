@@ -13,7 +13,6 @@ while queue:
 print len(st)  # 685
 
 
-
 # DFS
 st = {type}
 
