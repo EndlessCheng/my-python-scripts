@@ -37,6 +37,3 @@ def known(words):
 def correct(word):
     candidates = known([word]) or known(edits1(word)) or known_edits2(word) or [word]
     return max(candidates, key=words_with_weight.get)
-
-
-
