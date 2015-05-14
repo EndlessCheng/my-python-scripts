@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def generator_odd(size, start=1):
+def generate_odd(size, start=1):
     array = [x[:] for x in [[0] * size] * size]
     x, y = 0, size >> 1
     for i in range(start, size * size + start):
@@ -14,7 +14,7 @@ def generator_odd(size, start=1):
     return array
 
 
-def generator_double_even(size):
+def generate_double_even(size):
     gap1 = size >> 2
     gap2 = size - gap1
 
@@ -37,20 +37,20 @@ def generator_double_even(size):
     return array
 
 
-def generator_double_odd(size):
+def generate_double_odd(size):
     half = size >> 1
     k = half >> 1
 
-    array_a = generator_odd(half)
-    array_b = generator_odd(half, 3 * half * half + 1)
+    array_a = generate_odd(half)
+    array_b = generate_odd(half, 3 * half * half + 1)
     for i in range(half):
         for j in range(half >> 1):
             array_a[i][j], array_b[i][j] = array_b[i][j], array_a[i][j]
     for j in range(half - 1):
         array_a[k][j], array_b[k][j] = array_b[k][j], array_a[k][j]
 
-    array_c = generator_odd(half, 2 * half * half + 1)
-    array_d = generator_odd(half, half * half + 1)
+    array_c = generate_odd(half, 2 * half * half + 1)
+    array_d = generate_odd(half, half * half + 1)
     for i in range(half):
         for j in range(2, k + 1):
             array_c[i][j], array_d[i][j] = array_d[i][j], array_c[i][j]
@@ -79,10 +79,10 @@ if '__main__' == __name__:
         assert isinstance(size, int) and size >= 3
 
         if size & 1:
-            result = generator_odd(size)
+            result = generate_odd(size)
         elif size & 3:
-            result = generator_double_odd(size)
+            result = generate_double_odd(size)
         else:
-            result = generator_double_even(size)
+            result = generate_double_even(size)
 
         print_array(result)
