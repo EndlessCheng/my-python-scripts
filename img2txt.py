@@ -6,7 +6,7 @@ GAP = 256 / len(CHAR_PIX_LIST)
 
 
 class Img2txt:
-    def __init__(self, src, resize=0.3):
+    def __init__(self, src, resize=0.7):
         self.src = src
         img = Image.open(src)
         if img.mode == 'P' or img.mode == 'RGBA':
