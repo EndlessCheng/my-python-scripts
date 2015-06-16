@@ -15,7 +15,7 @@ class Img2txt:
             img = im
         img = img.convert('L')
         self.w = int(img.size[0] * resize)
-        self.h = int(img.size[1] / 2.0 * resize)
+        self.h = int(img.size[1] / 2.0 * resize)  # 由于显示的字符不是等高宽的（高比宽长），这里将图片高度缩小来调整。
         img = img.resize((self.w, self.h), Image.ANTIALIAS)
         self.pixes = img.load()
 
