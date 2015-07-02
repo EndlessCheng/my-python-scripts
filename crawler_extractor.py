@@ -3,7 +3,7 @@ import sys
 import urllib2
 import re
 
-
+ 
 class Extractor(object):
 
     def __init__(self, url='', blockSize=3):
