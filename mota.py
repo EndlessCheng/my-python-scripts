@@ -2,7 +2,6 @@
 import sys
 
 
-# 怪物血量，怪物防御
 def get_critical_point(hp, def_):
     hp = int(hp)
     def_ = int(def_)
