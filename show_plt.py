@@ -13,7 +13,7 @@ with open(os.path.expanduser('~') + '/code_line_log.txt') as f:
             break
         time = splits[0].strip()
         code_lines = splits[1].strip()
-        x.append(dt.datetime.strptime(time, '%Y-%m-%d %H:%M:%S').date())
+        x.append(dt.datetime.strptime(time, '%Y-%m-%d %H:%M:%S'))
         y.append(int(code_lines))
 
 plt.plot(x, y)
