@@ -16,5 +16,5 @@ for h_soup in soup.find_all(re.compile(r'h\d+')):
     h_soup['id'] = h_soup.text.lower().replace(' ', '-')
 
 with open("help.html", 'w') as f:
-    html = soup.prettify().encode('utf-8')
+    html = soup.encode('utf-8')
     f.write(html)
