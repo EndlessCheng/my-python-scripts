@@ -29,13 +29,6 @@
   解决：修改 `apscheduler/__init__.py` 的 `release = ...` 为 `release = '3.3.1'`（具体版本号请用 Python 终端获取）
 
 
-# summer 项目
-
-1. 移动 `resource` 目录到 `~` 目录下。
-
-2. 修改获取资源文件路径的代码，即修改 `hh_online/parameters/parameter.py` 中的 `RESOURCE_ROOT_DIRECTORY = os.path.join(os.path.expanduser('~'), 'resource')`
-
-
 # Django
 
 1. 查看项目文件夹名和 `settings.py` 所在文件夹名是否*不同名*，如果*同名*则修改项目文件夹名。
