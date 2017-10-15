@@ -13,7 +13,6 @@
   解决：在 `mock/mock.py` 中，71-73 行修改成：
   ```
   # _v = VersionInfo('mock').semantic_version()
-
   __version__ = '2.0.0'  # _v.release_string()
   version_info = (2, 0, 0, 'final', 0)  # _v.version_tuple()
   ```
@@ -51,14 +50,12 @@
 5. `settings.py` 末尾添加：
   ```
   TEMPLATE_CONTEXT_PROCESSORS = []
-
   TEMPLATE_LOADERS = []
   ```
 6. 若在打包时有“错误的语法”这样的异常，请检查项目中相应输出的位置，并注释掉相关的 `print` 语句。（此处为 pyinstaller 的缺陷）
 
 # 第三方库报错
 1. tensorflow：`sudo gedit /etc/environment` 添加一行 `PBR_VERSION=3.1.1`（可以用 `pbr -v` 查看版本号）
-
 
 # 附
 * [If Things Go Wrong](https://github.com/pyinstaller/pyinstaller/wiki/If-Things-Go-Wrong)
