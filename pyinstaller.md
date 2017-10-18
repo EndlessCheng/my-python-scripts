@@ -1,16 +1,16 @@
+# 准备工作
+
+1. （虚拟环境下）确保 pyinstaller 安装在虚拟环境的三方库中。
+
+2. 确认 distribute setuptools 均已安装且为最新版本。
+
+
 # 命令
 
 虽然 `main.py` 可以直接不加包名地 import 所在目录中的其他 .py 文件，但是 pyinstaller 无法识别这一点，所以我们需要 `cd` 到 `main.py` 所在目录。
 
   * 非虚拟环境，使用 `$ pyinstaller -F main.py`
   * 虚拟环境下，使用 `$ xxx_env/bin/pyinstaller -F main.py`
-
-
-# 准备工作
-
-1. （虚拟环境下）确保 pyinstaller 安装在虚拟环境的三方库中。
-
-2. 确认 distribute setuptools 均已安装且为最新版本。
 
 
 # 源码修改
