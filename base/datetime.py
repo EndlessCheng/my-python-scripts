@@ -1,3 +1,5 @@
+from datetime import datetime
+
 def fix_datetime(dt_str):
     """
     2018-03-30 07:38:23+00:00
