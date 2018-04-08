@@ -14,6 +14,7 @@ def handle(rfile, wfile):
             if line in (b'\r\n', b'\n', b''):
                 break
 
+        # TODO: 显然代码还有很多地方有重构的味道，这正是框架慢慢形成的起因
         wfile.sendall(f"{datetime.now().replace(microsecond=0)}".encode())
     except socket.timeout as e:
         print(f"Request timed out: {e}")
