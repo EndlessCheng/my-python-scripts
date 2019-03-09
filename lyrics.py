@@ -1,16 +1,24 @@
 import wx
 
+insert_str = '|'
 
-def modify_on_click(event):
+
+def _modify_on_click(with_translate: bool):
     text = text_ctrl.GetValue()
 
     # remove empty line
-    text = [line for line in text.split('\n') if line]
+    text = [line for line in text.split('\n') if line.strip()]
 
     # remove translate
-    text = text[::2]
+    if with_translate:
+        new_text = []
+        for i in range(0, len(text), 2):
+            new_text.append(text[i] + '(' + text[i + 1] + ')')
+        text = new_text
+    else:
+        text = text[::2]
 
-    text = '\n'.join(text)
+    text = (insert_str + '\n').join(text)
 
     text_ctrl.SetValue(text)
 
@@ -19,6 +27,14 @@ def modify_on_click(event):
         data_obj.SetText(text)
         wx.TheClipboard.SetData(data_obj)
         wx.TheClipboard.Close()
+
+
+def modify_on_click(event):
+    _modify_on_click(False)
+
+
+def modify_with_translate_on_click(event):
+    _modify_on_click(True)
 
 
 def clear_on_click(event):
@@ -41,12 +57,16 @@ if __name__ == '__main__':
     modify_button = wx.Button(panel, label='精简')
     modify_button.Bind(wx.EVT_BUTTON, modify_on_click)
 
+    modify_with_translate_button = wx.Button(panel, label='精简（带翻译）')
+    modify_with_translate_button.Bind(wx.EVT_BUTTON, modify_with_translate_on_click)
+
     clear_button = wx.Button(panel, label='清空')
     clear_button.Bind(wx.EVT_BUTTON, clear_on_click)
 
     # 结构
     vbox = wx.BoxSizer(wx.VERTICAL)
     vbox.Add(modify_button, flag=wx.EXPAND | wx.ALL, border=5)
+    vbox.Add(modify_with_translate_button, flag=wx.EXPAND | wx.ALL, border=5)
     vbox.Add(clear_button, flag=wx.EXPAND | wx.ALL, border=5)
 
     hbox = wx.BoxSizer()
