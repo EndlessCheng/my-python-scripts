@@ -1,3 +1,4 @@
+import re
 import wx
 
 insert_str = '|'
@@ -6,8 +7,8 @@ insert_str = '|'
 def _modify_on_click(with_translate: bool):
     text = text_ctrl.GetValue()
 
-    # remove empty line
-    text = [line for line in text.split('\n') if line.strip()]
+    # remove empty line and (...)
+    text = [re.sub(r'\(.*?\)', '', line) for line in text.split('\n') if line.strip()]
 
     # remove translate
     if with_translate:
